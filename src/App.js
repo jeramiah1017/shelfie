@@ -1,26 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header/Header'
+import Form from './components/Form/Form'
+import Product from './components/Dashboard/Product'
+import Dashboard from './components/Dashboard/Dashboard'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+export default class App extends Component {
+  constructor(){
+      super() 
+          this.state = {
+         inventory: [{
+           name: "",
+           img: '',
+           price: 0
+         }]
+      }
+      // this.getInventory = this.getInventory.bind(this);
+  } 
+
+  render() {
+    return(
+  <div className="App">
+  <Header />
+  <Dashboard />
+  <Form />
+  </div>
+    )
+  }
 }
-
-export default App;
