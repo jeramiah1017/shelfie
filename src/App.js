@@ -1,32 +1,21 @@
-import React, {Component} from 'react';
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-import Header from './components/Header/Header'
-import Form from './components/Form/Form'
-import Product from './components/Dashboard/Product'
-import Dashboard from './components/Dashboard/Dashboard'
+import Dashboard from './components/Dashboard/Dashboard'; 
+import Form from './components/Form/Form'; 
+import Header from './components/Header/Header'; 
+import { Route, Switch } from 'react-router-dom'; 
 
 
-export default class App extends Component {
-  constructor(){
-      super() 
-          this.state = {
-         inventory: [{
-           name: "",
-           img: '',
-           price: 0
-         }]
-      }
-      // this.getInventory = this.getInventory.bind(this);
-  } 
-
-  render() {
-    return(
-  <div className="App">
-  <Header />
-  <Dashboard />
-  <Form />
-  </div>
-    )
-  }
-}
+export default function App() {
+  return (
+    <div className="App">
+        <Header /> 
+        
+        <Switch>
+          <Route exact path='/' component={Dashboard} />
+          <Route path='/add' component={Form}/>
+          <Route path='/edit/:id' component={Form} />
+        </Switch>
+      </div>
+  )
+};
